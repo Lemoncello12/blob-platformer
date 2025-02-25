@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 9968604}
   - component: {fileID: 9968603}
   m_Layer: 0
-  m_Name: wizard-blob
+  m_Name: blob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
