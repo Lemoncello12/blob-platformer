@@ -77,12 +77,13 @@ public class BlobController : MonoBehaviour
 
     public bool grounded()
     {
-        if (Physics2D.BoxCast(transform.position, feetSize, 0, -transform.position, feetDist, ground)) {
+        if (Physics2D.BoxCast(transform.position, feetSize, 0, -transform.up, feetDist, ground)) {
             Debug.Log("AAAAAAAA");
             return true;
         }
         else
         {
+            Debug.Log("BBBBBBBBBBBBBB");
             return false;
         }
     }
