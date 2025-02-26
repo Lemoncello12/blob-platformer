@@ -21,12 +21,18 @@ public class BlobController : MonoBehaviour
 
     public GameObject cam;
 
+    private SpriteRenderer sprite;
+    public Sprite leftSprite;
+    private Sprite rightSprite;
+
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Awake()
     {
-        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        rightSprite = sprite.sprite;
+    rb = this.gameObject.GetComponent<Rigidbody2D>();
     }
     void Start()
     {
@@ -39,6 +45,14 @@ public class BlobController : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            sprite.sprite = leftSprite;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            sprite.sprite = rightSprite;
+        }
         Jump();
     }
 
