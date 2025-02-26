@@ -19,6 +19,8 @@ public class BlobController : MonoBehaviour
     public float feetDist;
     public LayerMask ground;
 
+    public GameObject cam;
+
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -78,12 +80,10 @@ public class BlobController : MonoBehaviour
     public bool grounded()
     {
         if (Physics2D.BoxCast(transform.position, feetSize, 0, -transform.up, feetDist, ground)) {
-            Debug.Log("AAAAAAAA");
             return true;
         }
         else
         {
-            Debug.Log("BBBBBBBBBBBBBB");
             return false;
         }
     }
