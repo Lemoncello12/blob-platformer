@@ -19,6 +19,8 @@ public class BlobController : MonoBehaviour
     public float feetDist;
     public LayerMask ground;
 
+    private Vector2 respawn;
+
     public GameObject cam;
 
     private SpriteRenderer sprite;
@@ -32,7 +34,8 @@ public class BlobController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         rightSprite = sprite.sprite;
-    rb = this.gameObject.GetComponent<Rigidbody2D>();
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        respawn = transform.position;
     }
     void Start()
     {
@@ -45,11 +48,11 @@ public class BlobController : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             sprite.sprite = leftSprite;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             sprite.sprite = rightSprite;
         }
@@ -58,7 +61,7 @@ public class BlobController : MonoBehaviour
 
     void Jump()
     {
-        if (grounded() && Input.GetButtonDown("Jump"))
+        if (Grounded() && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
             currentJumpTime = jumpTime;
@@ -91,7 +94,12 @@ public class BlobController : MonoBehaviour
         }
     }
 
-    public bool grounded()
+    public void Die()
+    {
+        transform.position = respawn;
+    }
+
+    public bool Grounded()
     {
         if (Physics2D.BoxCast(transform.position, feetSize, 0, -transform.up, feetDist, ground)) {
             return true;
@@ -99,6 +107,14 @@ public class BlobController : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Damage"))
+        {
+            Die();
         }
     }
 
