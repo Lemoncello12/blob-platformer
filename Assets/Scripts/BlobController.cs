@@ -114,7 +114,7 @@ public class BlobController : MonoBehaviour
     {
         if (other.CompareTag("Damage"))
         {
-            Die();
+            Invoke("Die", 0.1f);
         }
     }
 

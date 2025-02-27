@@ -252,7 +252,7 @@ MonoBehaviour:
   moveSpeed: 5
   minJumpForce: 0.03125
   maxJumpForce: 8
-  jumpTime: 0.3
+  jumpTime: 0.35
   feetSize: {x: 0.8, y: 0.5}
   feetDist: 0.8
   ground:
