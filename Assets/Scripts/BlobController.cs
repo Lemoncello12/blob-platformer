@@ -19,7 +19,7 @@ public class BlobController : MonoBehaviour
     public float feetDist;
     public LayerMask ground;
 
-    private Vector2 respawn;
+    public Vector2 respawn;
 
     public GameObject cam;
 
