@@ -1082,7 +1082,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -13, y: -5, z: 0}
-  m_Size: {x: 84, y: 14, z: 1}
+  m_Size: {x: 84, y: 20, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1271,7 +1271,7 @@ MonoBehaviour:
   cam: {fileID: 519420033}
   abyss: {fileID: 84813475}
   camY: 11
-  abyssY: 10
+  abyssY: 4.9
 --- !u!61 &1117311157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1658,7 +1658,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -14, y: -7, z: 0}
-  m_Size: {x: 90, y: 15, z: 1}
+  m_Size: {x: 90, y: 20, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1753,7 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e64dcab322e784b84c75070748d738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numRight: 3
+  numRight: 4
   numUp: 2
   background: {fileID: 8317916004870023268, guid: 34bf47fd2ff19854ea75c2ec571c7ed3, type: 3}
 --- !u!4 &1909402522
