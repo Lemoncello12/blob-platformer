@@ -36,6 +36,8 @@ public class BlobController : MonoBehaviour
         rightSprite = sprite.sprite;
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         respawn = transform.position;
+        //Remove when level finish:
+        transform.position = new Vector2(48.5f, 6.2f);
     }
     void Start()
     {
