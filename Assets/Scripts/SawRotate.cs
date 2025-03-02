@@ -9,7 +9,7 @@ public class SawRotate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed *= -10 * Mathf.Abs(saws[0].transform.localPosition.x);
+        speed *= 10 * Mathf.Abs(saws[0].transform.localPosition.x);
     }
 
     // Update is called once per frame
