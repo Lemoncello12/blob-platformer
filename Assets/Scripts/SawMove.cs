@@ -7,16 +7,28 @@ using UnityEngine.Apple;
 public class SawMove : MonoBehaviour
 {
     [SerializeField] private bool axisIsY;
+    [SerializeField] private bool invert;
+
     [SerializeField] private float speed;
     [SerializeField] private float max;
     [SerializeField] private float delay;
 
     private Vector2 original;
     private bool moving = false;
+    private int flip;
     // Start is called before the first frame update
     void Start()
     {
         original = transform.position;
+
+        if (invert)
+        {
+            flip = -1;
+        }
+        else
+        {
+            flip = 1;
+        }
         Invoke("StartMoving",delay);
     }
 
@@ -27,11 +39,11 @@ public class SawMove : MonoBehaviour
         {
             if (axisIsY)
             {
-                transform.position = new Vector2(transform.position.x, Mathf.PingPong(Time.time * speed, max) + original.y);
+                transform.position = new Vector2(transform.position.x, flip * Mathf.PingPong(Time.time * speed, max) + original.y);
             }
             else
             {
-                transform.position = new Vector2(Mathf.PingPong(Time.time * speed, max) + original.x, original.y);
+                transform.position = new Vector2(flip * Mathf.PingPong(Time.time * speed, max) + original.x, original.y);
             }
         }
     }
