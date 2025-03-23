@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 278036481}
   - component: {fileID: 278036480}
   - component: {fileID: 278036482}
+  - component: {fileID: 278036483}
   m_Layer: 0
   m_Name: hoopy
   m_TagString: Untagged
@@ -493,6 +494,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.067474365, y: 0}
   m_Size: {x: 1.3702698, y: 2}
   m_Direction: 0
+--- !u!114 &278036483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278036479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0d9641e06c7414a8d010c69f77fc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &374989488
 GameObject:
   m_ObjectHideFlags: 0
