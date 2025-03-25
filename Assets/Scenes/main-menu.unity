@@ -2013,7 +2013,7 @@ GameObject:
   - component: {fileID: 2071045616}
   - component: {fileID: 2071045615}
   m_Layer: 5
-  m_Name: level1 (1)
+  m_Name: level2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2089,7 +2089,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2114,7 +2114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d1afba6776ffd4e429b10885d68b6217, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fa99d9b3ea5055499ee23ade1d29dcc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
