@@ -22,7 +22,7 @@ public class Hoopy : MonoBehaviour
     {
         if (collision.GetComponent<BlobController>() != null)
         {
-            if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1) != null){
+            if (SceneManager.sceneCount + 1 != SceneManager.GetActiveScene().buildIndex){
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
