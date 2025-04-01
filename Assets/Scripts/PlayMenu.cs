@@ -15,14 +15,16 @@ public class PlayMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("Escape") && PauseMenu.activeSelf == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeSelf == false)
         {
             PauseMenu.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
     public void QuitToMenu()
     {
+        Debug.Log("Menu quitted");
         SceneManager.LoadScene(0);
     }
 
@@ -34,5 +36,6 @@ public class PlayMenu : MonoBehaviour
     public void ExitMenu()
     {
         PauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 }

@@ -50,15 +50,18 @@ public class BlobController : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Time.timeScale != 0)
         {
-            sprite.sprite = leftSprite;
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                sprite.sprite = leftSprite;
+            }
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                sprite.sprite = rightSprite;
+            }
+            Jump();
         }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            sprite.sprite = rightSprite;
-        }
-        Jump();
     }
 
     void Jump()
