@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BlobController : MonoBehaviour
 {
+    public float dashForce = 0f;
+
     public float moveSpeed;
 
     public float minJumpForce;
@@ -61,6 +63,10 @@ public class BlobController : MonoBehaviour
                 sprite.sprite = rightSprite;
             }
             Jump();
+            if (dashForce != 0)
+            {
+                Dash();
+            }
         }
     }
 
@@ -97,6 +103,11 @@ public class BlobController : MonoBehaviour
         {
             isJumping = false;
         }
+    }
+
+    void Dash()
+    {
+
     }
 
     public void Die()

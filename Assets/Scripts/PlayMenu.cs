@@ -24,7 +24,6 @@ public class PlayMenu : MonoBehaviour
 
     public void QuitToMenu()
     {
-        Debug.Log("Menu quitted");
         SceneManager.LoadScene(0);
     }
 

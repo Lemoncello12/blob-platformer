@@ -208,7 +208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1146570211}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9968603
 Rigidbody2D:
@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f43c0f54bab8f4db8506b8bacb0650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockedDash: 0
   moveSpeed: 5
   minJumpForce: 0.03125
   maxJumpForce: 8
@@ -1439,7 +1440,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 734996459}
         m_TargetAssemblyTypeName: PlayMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -1541,7 +1542,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 734996459}
         m_TargetAssemblyTypeName: PlayMenu, Assembly-CSharp
         m_MethodName: ExitMenu
         m_Mode: 1
@@ -2143,7 +2144,6 @@ Transform:
   - {fileID: 2129739787}
   - {fileID: 1327357317}
   - {fileID: 1084194697}
-  - {fileID: 9968602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1166871310
@@ -2643,7 +2643,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 734996459}
         m_TargetAssemblyTypeName: PlayMenu, Assembly-CSharp
         m_MethodName: QuitToMenu
         m_Mode: 1
@@ -3103,6 +3103,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 734996457}
   - {fileID: 1909402522}
+  - {fileID: 9968602}
   - {fileID: 1146570211}
   - {fileID: 1117311155}
   - {fileID: 84813477}
