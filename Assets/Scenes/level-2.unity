@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9968602}
-  - component: {fileID: 9968601}
   - component: {fileID: 9968605}
+  - component: {fileID: 9968601}
   - component: {fileID: 9968606}
   - component: {fileID: 9968603}
   m_Layer: 0
@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 9968600}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.875, z: 0}
+  m_LocalPosition: {x: 0, y: -0.825, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -249,7 +249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f43c0f54bab8f4db8506b8bacb0650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 25
   moveSpeed: 5
   minJumpForce: 0.03125
   maxJumpForce: 8
@@ -262,6 +261,8 @@ MonoBehaviour:
   respawn: {x: 0, y: 0}
   cam: {fileID: 519420028}
   leftSprite: {fileID: 21300000, guid: a30bacf849c08bb4a9c43ee5ec8e91e6, type: 3}
+  dashForce: 50
+  isDashing: 0
 --- !u!70 &9968606
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

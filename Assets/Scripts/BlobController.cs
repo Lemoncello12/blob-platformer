@@ -24,14 +24,12 @@ public class BlobController : MonoBehaviour
 
     public GameObject cam;
 
-    bool facingRight = true;
-
     private SpriteRenderer sprite;
     public Sprite leftSprite;
     private Sprite rightSprite;
 
-    public float dashTime;
-    private float dashForce;
+    public float dashForce;
+    public bool isDashing;
 
 
     private Rigidbody2D rb;
@@ -53,34 +51,37 @@ public class BlobController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (facingRight)
-        {
-            sprite.sprite = rightSprite;
-        }
-        else
-        {
-            sprite.sprite = leftSprite;
-        }
-            float horizontal = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         if (Time.timeScale != 0)
         {
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (!isDashing)
             {
-                facingRight = false;
+                //Decides whether sprite faces left or right
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    sprite.sprite = leftSprite;
+                }
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    sprite.sprite = rightSprite;
+                }
+                
+                //Walks left to right
+                float horizontal = Input.GetAxisRaw("Horizontal");
+                rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+
+                Jump();
             }
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                facingRight = true;
-            }
-            Jump();
+
             if (dashForce != 0)
             {
                 Dash();
             }
         }
     }
-
+    void Walk()
+    {
+        
+    }
     void Jump()
     {
         if (Grounded() && Input.GetButtonDown("Jump"))
@@ -118,16 +119,29 @@ public class BlobController : MonoBehaviour
 
     void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (isDashing)
         {
-            if (facingRight)
+            //transform.position = new Vector2(transform.position.x, 0);
+            if (rb.velocity.x == 0)
             {
-                Debug.Log("Should be dashing right");
-                rb.velocity = new Vector2(dashForce, rb.velocity.y);
+                isDashing = false;
             }
-            else
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
             {
-                rb.velocity = new Vector2(-dashForce, rb.velocity.y);
+                isDashing = true;
+                isJumping = false;
+                rb.velocity = new Vector2(0, 0);
+                if (sprite.sprite == leftSprite)
+                {
+                    rb.AddForce(Vector2.left * dashForce);
+                }
+                else
+                {
+                    rb.AddForce(Vector2.right * dashForce);
+                }
             }
         }
     }
