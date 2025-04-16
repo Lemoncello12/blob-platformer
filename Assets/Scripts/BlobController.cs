@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class BlobController : MonoBehaviour
 {
-    public float dashForce = 0f;
-
     public float moveSpeed;
 
     public float minJumpForce;
     public float maxJumpForce;
     public float jumpTime;
+
 
     private float currentJumpTime;
     private float jumpForce;
@@ -25,9 +24,14 @@ public class BlobController : MonoBehaviour
 
     public GameObject cam;
 
+    bool facingRight = true;
+
     private SpriteRenderer sprite;
     public Sprite leftSprite;
     private Sprite rightSprite;
+
+    public float dashTime;
+    private float dashForce;
 
 
     private Rigidbody2D rb;
@@ -49,18 +53,25 @@ public class BlobController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        if (facingRight)
+        {
+            sprite.sprite = rightSprite;
+        }
+        else
+        {
+            sprite.sprite = leftSprite;
+        }
+            float horizontal = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         if (Time.timeScale != 0)
         {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                sprite.sprite = leftSprite;
+                facingRight = false;
             }
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                sprite.sprite = rightSprite;
+                facingRight = true;
             }
             Jump();
             if (dashForce != 0)
@@ -107,7 +118,18 @@ public class BlobController : MonoBehaviour
 
     void Dash()
     {
-
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (facingRight)
+            {
+                Debug.Log("Should be dashing right");
+                rb.velocity = new Vector2(dashForce, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-dashForce, rb.velocity.y);
+            }
+        }
     }
 
     public void Die()
