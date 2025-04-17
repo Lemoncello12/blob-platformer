@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BlobController : MonoBehaviour
 {
@@ -28,8 +29,13 @@ public class BlobController : MonoBehaviour
     public Sprite leftSprite;
     private Sprite rightSprite;
 
-    public float dashForce;
-    public bool isDashing;
+    private bool facingRight;
+
+    private bool isDashing;
+    public float dashDist;
+    public float dashSpeed;
+    private float dashEndX;
+
 
 
     private Rigidbody2D rb;
@@ -59,10 +65,12 @@ public class BlobController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     sprite.sprite = leftSprite;
+                    facingRight = false;
                 }
                 if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     sprite.sprite = rightSprite;
+                    facingRight = true;
                 }
                 
                 //Walks left to right
@@ -72,15 +80,11 @@ public class BlobController : MonoBehaviour
                 Jump();
             }
 
-            if (dashForce != 0)
+            if (SceneManager.GetActiveScene().buildIndex >= 2)
             {
                 Dash();
             }
         }
-    }
-    void Walk()
-    {
-        
     }
     void Jump()
     {
@@ -121,8 +125,16 @@ public class BlobController : MonoBehaviour
     {
         if (isDashing)
         {
-            //transform.position = new Vector2(transform.position.x, 0);
-            if (rb.velocity.x == 0)
+            if (facingRight)
+            {
+                rb.velocity = new Vector2(dashSpeed, 0);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-dashSpeed, 0);
+            }
+
+            if ((dashEndX > transform.position.x && facingRight) || (dashEndX < transform.position.x && !facingRight))
             {
                 isDashing = false;
             }
@@ -134,13 +146,13 @@ public class BlobController : MonoBehaviour
                 isDashing = true;
                 isJumping = false;
                 rb.velocity = new Vector2(0, 0);
-                if (sprite.sprite == leftSprite)
+                if (facingRight)
                 {
-                    rb.AddForce(Vector2.left * dashForce);
+                    dashEndX = transform.position.x + dashDist;
                 }
                 else
                 {
-                    rb.AddForce(Vector2.right * dashForce);
+                    dashEndX = transform.position.x - dashDist;
                 }
             }
         }
