@@ -31,7 +31,7 @@ public class BlobController : MonoBehaviour
 
     private bool facingRight;
 
-    private bool isDashing;
+    private bool isDashing = false;
     public float dashDist;
     public float dashSpeed;
     private float dashEndX;
@@ -59,8 +59,9 @@ public class BlobController : MonoBehaviour
     {
         if (Time.timeScale != 0)
         {
-            if (!isDashing)
+            if (isDashing == false)
             {
+                Debug.Log("Not dashing");
                 //Decides whether sprite faces left or right
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
@@ -127,11 +128,12 @@ public class BlobController : MonoBehaviour
         {
             if (facingRight)
             {
-                rb.velocity = new Vector2(dashSpeed, 0);
+                Debug.Log("Should be dashing right");
+                rb.velocity = new Vector2(dashSpeed, rb.velocity.y);
             }
             else
             {
-                rb.velocity = new Vector2(-dashSpeed, 0);
+                rb.velocity = new Vector2(-dashSpeed, rb.velocity.y);
             }
 
             if ((dashEndX > transform.position.x && facingRight) || (dashEndX < transform.position.x && !facingRight))
@@ -141,8 +143,9 @@ public class BlobController : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
+                Debug.Log("Z pressed");
                 isDashing = true;
                 isJumping = false;
                 rb.velocity = new Vector2(0, 0);
