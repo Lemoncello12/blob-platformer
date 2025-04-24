@@ -261,8 +261,8 @@ MonoBehaviour:
   respawn: {x: 0, y: 0}
   cam: {fileID: 519420028}
   leftSprite: {fileID: 21300000, guid: a30bacf849c08bb4a9c43ee5ec8e91e6, type: 3}
-  dashForce: 50
-  isDashing: 0
+  dashDist: 5
+  dashSpeed: 20
 --- !u!70 &9968606
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
