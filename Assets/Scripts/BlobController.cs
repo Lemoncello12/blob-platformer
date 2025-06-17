@@ -127,7 +127,6 @@ public class BlobController : MonoBehaviour
         {
             if (facingRight)
             {
-                Debug.Log("Should be dashing right");
                 rb.velocity = new Vector2(dashSpeed, rb.velocity.y);
             }
             else
@@ -143,7 +142,7 @@ public class BlobController : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 isDashing = true;
                 isJumping = false;
