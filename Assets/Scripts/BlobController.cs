@@ -162,6 +162,8 @@ public class BlobController : MonoBehaviour
 
     public void Die()
     {
+        isDashing = false;
+        rb.gravityScale = 2.5f;
         transform.position = respawn;
     }
 
