@@ -186,6 +186,16 @@ public class BlobController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!Grounded() && isDashing)
+        {
+            Debug.Log("Wall");
+            isDashing = false;
+            rb.gravityScale = 2.5f;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - transform.up * feetDist, feetSize);
