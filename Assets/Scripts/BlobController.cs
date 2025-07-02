@@ -32,6 +32,7 @@ public class BlobController : MonoBehaviour
 
     private bool facingRight = true;
 
+    private bool canDash = true;
     private bool isDashing = false;
     public float dashDist;
     public float dashSpeed;
@@ -58,8 +59,6 @@ public class BlobController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (Time.timeScale != 0)
         {
             if (isDashing == false)
@@ -126,6 +125,7 @@ public class BlobController : MonoBehaviour
 
     void Dash()
     {
+        
         if (isDashing)
         {
             if (facingRight)
@@ -141,11 +141,16 @@ public class BlobController : MonoBehaviour
             {
                 isDashing = false;
                 rb.gravityScale = 2.5f;
+                canDash = false;
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Grounded())
+            {
+                canDash = true;
+            }
+            if (Input.GetKeyDown(KeyCode.Z) && canDash)
             {
                 isDashing = true;
                 isJumping = false;
@@ -193,9 +198,9 @@ public class BlobController : MonoBehaviour
     {
         if (!Grounded() && isDashing)
         {
-            Debug.Log("Wall");
             isDashing = false;
             rb.gravityScale = 2.5f;
+            canDash = false;
         }
     }
 
