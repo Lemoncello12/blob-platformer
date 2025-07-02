@@ -18,8 +18,7 @@ public class BlobController : MonoBehaviour
     private bool isJumping = false;
 
     public Vector2 feetSize;
-    public float feetDistX;
-    public float feetDistY;
+    public float feetDist;
     public LayerMask ground;
 
     public Vector2 respawn;
@@ -170,7 +169,7 @@ public class BlobController : MonoBehaviour
 
     public bool Grounded()
     {
-        if (Physics2D.BoxCast(transform.position, feetSize, 0, -transform.up, feetDistY, ground)) {
+        if (Physics2D.BoxCast(transform.position, feetSize, 0, -transform.up, feetDist, ground)) {
             return true;
         }
         else
@@ -199,7 +198,7 @@ public class BlobController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position - transform.up * feetDistY, feetSize);
+        Gizmos.DrawWireCube(transform.position - transform.up * feetDist, feetSize);
     }
 
 }
