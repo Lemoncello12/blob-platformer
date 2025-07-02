@@ -58,6 +58,8 @@ public class BlobController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (Time.timeScale != 0)
         {
             if (isDashing == false)
@@ -170,7 +172,7 @@ public class BlobController : MonoBehaviour
 
     public bool Grounded()
     {
-        if (Physics2D.BoxCast(transform.position, feetSize, 0, -transform.up, feetDistY, ground)) {
+        if (Physics2D.BoxCast(new Vector2(transform.position.x + feetDistX, transform.position.y), feetSize, 0, -transform.up, feetDistY, ground)) {
             return true;
         }
         else
@@ -199,7 +201,8 @@ public class BlobController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position - transform.up * feetDistY, feetSize);
+        Vector3 groundedOrigin = new Vector3(transform.position.x + feetDistX, transform.position.y, transform.position.z);
+        Gizmos.DrawWireCube(groundedOrigin - transform.up * feetDistY, feetSize);
     }
 
 }
