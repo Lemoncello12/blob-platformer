@@ -253,8 +253,8 @@ MonoBehaviour:
   minJumpForce: 0.03125
   maxJumpForce: 8
   jumpTime: 0.35
-  feetSize: {x: 0.8, y: 0.5}
-  feetDistX: 0
+  feetSize: {x: 0.7, y: 0.5}
+  feetDistX: 0.04
   feetDistY: 0.8
   ground:
     serializedVersion: 2
