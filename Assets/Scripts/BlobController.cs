@@ -12,6 +12,8 @@ public class BlobController : MonoBehaviour
     public float maxJumpForce;
     public float jumpTime;
 
+    public float bounceMult;
+    private float bounce;
 
     private float currentJumpTime;
     private float jumpForce;
@@ -94,16 +96,16 @@ public class BlobController : MonoBehaviour
         {
             isJumping = true;
             currentJumpTime = jumpTime;
-            jumpForce = minJumpForce;
+            jumpForce = minJumpForce * bounce;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
         if (Input.GetButton("Jump") && isJumping)
         {
-            jumpForce *= 2;
-            if (jumpForce > maxJumpForce)
+            jumpForce *= 2 * bounce;
+            if (jumpForce > (maxJumpForce * bounce))
             {
-                jumpForce = maxJumpForce;
+                jumpForce = (maxJumpForce * bounce);
             }
 
             if (currentJumpTime > 0)
@@ -114,12 +116,14 @@ public class BlobController : MonoBehaviour
             else
             {
                 isJumping = false;
+                bounce = 1;
             }
         }
 
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
+            bounce = 0;
         }
     }
 
@@ -194,6 +198,13 @@ public class BlobController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bounce"))
+        {
+            bounce = bounceMult;
+        }
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!Grounded() && isDashing)
