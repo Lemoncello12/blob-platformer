@@ -13,7 +13,7 @@ public class BlobController : MonoBehaviour
     public float jumpTime;
 
     public float bounceMult;
-    private float bounce;
+    private float bounce = 1;
 
     private float currentJumpTime;
     private float jumpForce;
@@ -123,7 +123,7 @@ public class BlobController : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
-            bounce = 0;
+            bounce = 1;
         }
     }
 
@@ -174,9 +174,12 @@ public class BlobController : MonoBehaviour
 
     public void Die()
     {
+        rb.velocity = new Vector2(0, 0);
+        isJumping = false;
         isDashing = false;
         rb.gravityScale = 2.5f;
         transform.position = respawn;
+        bounce = 1;
     }
 
     public bool Grounded()
