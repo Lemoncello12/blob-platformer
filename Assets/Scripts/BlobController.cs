@@ -51,7 +51,7 @@ public class BlobController : MonoBehaviour
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         respawn = transform.position;
         //Remove when level finish:
-        //stransform.position = new Vector2(70f, -5f);
+        transform.position = new Vector2(70f, -5.5f);
     }
     void Start()
     {
