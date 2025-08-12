@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LocalSave : MonoBehaviour
 {
     public int[] levelNumCheck = new int[12];
+    public int character = 0;
     public bool hasWizard = false;
     public bool hasCommunist = false;
     private int currentScene;
@@ -13,16 +14,26 @@ public class LocalSave : MonoBehaviour
     void Awake()
     {
         LoadPlayer();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        currentScene = SceneManager.GetActiveScene().buildIndex;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SavePlayer()
     {
-        
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        levelNumCheck = data.levelNumCheck;
+        hasWizard = data.hasWizard;
+        hasCommunist = data.hasCommunist;
+    }
+
+    public void ResetPlayer()
+    {
+        SaveSystem.DeletePlayer();
+        SceneManager.LoadScene(0);
     }
 }
