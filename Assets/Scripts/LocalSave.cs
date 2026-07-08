@@ -26,21 +26,13 @@ public class LocalSave : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
+        character = data.character;
         levelNumCheck = data.levelNumCheck;
-        hasWizard = data.hasWizard;
-        hasCommunist = data.hasCommunist;
     }
 
     public void ResetPlayer()
     {
         SaveSystem.DeletePlayer();
         SceneManager.LoadScene(0);
-    }
-    public void ChangeCharacter(int chara)
-    {
-        character = chara;
-        SaveSystem.SavePlayer(this);
-
-        //capitalist = 0, communist = 1, wizard = 2
     }
 }
