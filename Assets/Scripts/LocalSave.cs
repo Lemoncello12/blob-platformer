@@ -36,4 +36,11 @@ public class LocalSave : MonoBehaviour
         SaveSystem.DeletePlayer();
         SceneManager.LoadScene(0);
     }
+    public void ChangeCharacter(int chara)
+    {
+        character = chara;
+        SaveSystem.SavePlayer(this);
+
+        //capitalist = 0, communist = 1, wizard = 2
+    }
 }

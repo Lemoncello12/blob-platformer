@@ -7,11 +7,13 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject main;
     public GameObject levelSelect;
+    public GameObject characterSelect;
     public GameObject options;
     // Start is called before the first frame update
     void Awake()
     {
         main.SetActive(true);
+        characterSelect.SetActive(false);
         levelSelect.SetActive(false);
         options.SetActive(false);
     }
@@ -28,6 +30,7 @@ public class MainMenu : MonoBehaviour
     public void Back()
     {
         levelSelect.SetActive(false);
+        characterSelect.SetActive(false);
         options.SetActive(false);
         main.SetActive(true);
     }
@@ -41,6 +44,12 @@ public class MainMenu : MonoBehaviour
     public void LoadScene(int scene)
     {
         SceneManager.LoadScene(scene);
+    }
+
+    public void CharacterSelect()
+    {
+        main.SetActive(false);
+        characterSelect.SetActive(true);
     }
 
     public void Options()
