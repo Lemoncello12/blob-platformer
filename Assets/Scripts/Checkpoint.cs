@@ -21,15 +21,15 @@ public class Checkpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (save.character == 0)
+        if (save.GetCharID() == 0)
         {
             sprite = capitalist;
         }
-        else if (save.character == 1)
+        else if (save.GetCharID() == 1)
         {
             sprite = communist;
         }
-        else if (save.character == 2)
+        else if (save.GetCharID() == 2)
         {
             sprite = wizard;
         }

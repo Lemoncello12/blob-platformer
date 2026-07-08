@@ -35,4 +35,14 @@ public class LocalSave : MonoBehaviour
         SaveSystem.DeletePlayer();
         SceneManager.LoadScene(0);
     }
+
+    public int GetCharID()
+    {
+        return character;
+    }
+
+    public void SetCharID(int chara)
+    {
+        character = chara;
+    }
 }

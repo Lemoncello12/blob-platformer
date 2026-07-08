@@ -53,8 +53,9 @@ public class BlobController : MonoBehaviour
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
+        
         sprite = GetComponent<SpriteRenderer>();
         SetCharacter();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
@@ -62,33 +63,23 @@ public class BlobController : MonoBehaviour
         //Remove when level finish:
         //transform.position = new Vector2(117f, 3.3f);
     }
-    void Start()
-    {
-
-    }
 
     void SetCharacter()
     {
-        if (save.character == 0)
+        if (save.GetCharID() == 0)
         {
             rightSprite = capitalistR;
             leftSprite = capitalistL;
         }
-        else if (save.character == 1)
+        else if (save.GetCharID() == 1)
         {
             rightSprite = communistR;
             leftSprite = communistL;
         }
-        else if (save.character == 2)
+        else if (save.GetCharID() == 2)
         {
             rightSprite = wizardR;
             leftSprite = wizardL;
-        }
-        else
-        {
-            Debug.Log("Character ID out of bounds");
-            rightSprite = capitalistR;
-            leftSprite = capitalistL;
         }
 
         sprite.sprite = rightSprite;
