@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
     public Sprite sprite;
+    public Sprite capitalist;
+    public Sprite communist;
+    public Sprite wizard;
+
+    public LocalSave save;
+
     public CameraController cam;
     public GameObject abyss;
 
@@ -14,7 +21,18 @@ public class Checkpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (save.character == 0)
+        {
+            sprite = capitalist;
+        }
+        else if (save.character == 1)
+        {
+            sprite = communist;
+        }
+        else if (save.character == 2)
+        {
+            sprite = wizard;
+        }
     }
 
     // Update is called once per frame

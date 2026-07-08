@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 1044891865}
   - component: {fileID: 1044891864}
   m_Layer: 0
-  m_Name: checkpoint_1 (1)
+  m_Name: checkpoint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4866,6 +4866,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2ffa4537a532652438dfd36a4452cc4a, type: 3}
+  capitalist: {fileID: 21300000, guid: 2ffa4537a532652438dfd36a4452cc4a, type: 3}
+  communist: {fileID: 21300000, guid: 08696f01545078d42afd1800646ad342, type: 3}
+  wizard: {fileID: 21300000, guid: df80c14315f0e5540bb58acdccd248f3, type: 3}
+  save: {fileID: 734996460}
   cam: {fileID: 519420033}
   abyss: {fileID: 84813475}
   camY: 10
@@ -6787,6 +6791,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2ffa4537a532652438dfd36a4452cc4a, type: 3}
+  capitalist: {fileID: 21300000, guid: 2ffa4537a532652438dfd36a4452cc4a, type: 3}
+  communist: {fileID: 21300000, guid: 08696f01545078d42afd1800646ad342, type: 3}
+  wizard: {fileID: 21300000, guid: df80c14315f0e5540bb58acdccd248f3, type: 3}
+  save: {fileID: 734996460}
   cam: {fileID: 519420033}
   abyss: {fileID: 84813475}
   camY: 11
