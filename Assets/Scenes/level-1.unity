@@ -262,7 +262,13 @@ MonoBehaviour:
     m_Bits: 8
   respawn: {x: 0, y: 0}
   cam: {fileID: 519420028}
-  leftSprite: {fileID: 21300000, guid: a30bacf849c08bb4a9c43ee5ec8e91e6, type: 3}
+  save: {fileID: 734996460}
+  capitalistR: {fileID: 21300000, guid: 24ba3a4e76a0cf644bf0822b3923ae84, type: 3}
+  capitalistL: {fileID: 21300000, guid: a30bacf849c08bb4a9c43ee5ec8e91e6, type: 3}
+  communistR: {fileID: 21300000, guid: f11fab3ae753fd54e851e5a1762ca4d4, type: 3}
+  communistL: {fileID: 21300000, guid: d67b5ca6e8c7b8e4d918eb1173a0c6d7, type: 3}
+  wizardR: {fileID: 21300000, guid: a4952e03007ea5c4981ec31088e009e5, type: 3}
+  wizardL: {fileID: 21300000, guid: 299d172adbc533f43a091f2832748303, type: 3}
   dashDist: 0
   dashSpeed: 0
 --- !u!70 &9968606
@@ -4435,6 +4441,7 @@ GameObject:
   - component: {fileID: 734996457}
   - component: {fileID: 734996458}
   - component: {fileID: 734996459}
+  - component: {fileID: 734996460}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4485,6 +4492,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1652826958}
+--- !u!114 &734996460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734996456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a304b9a820d33f946b15b546914129a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelNumCheck: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  character: 0
+  hasWizard: 0
+  hasCommunist: 0
 --- !u!1 &873693487
 GameObject:
   m_ObjectHideFlags: 0

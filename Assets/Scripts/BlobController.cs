@@ -28,9 +28,18 @@ public class BlobController : MonoBehaviour
 
     public GameObject cam;
 
+    public LocalSave save;
+    
     private SpriteRenderer sprite;
-    public Sprite leftSprite;
+    private Sprite leftSprite;
     private Sprite rightSprite;
+
+    public Sprite capitalistR; //Pool of possible character sprites
+    public Sprite capitalistL;
+    public Sprite communistR;
+    public Sprite communistL;
+    public Sprite wizardR;
+    public Sprite wizardL;
 
     private bool facingRight = true;
 
@@ -47,7 +56,7 @@ public class BlobController : MonoBehaviour
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
-        rightSprite = sprite.sprite;
+        SetCharacter();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         respawn = transform.position;
         //Remove when level finish:
@@ -58,6 +67,32 @@ public class BlobController : MonoBehaviour
 
     }
 
+    void SetCharacter()
+    {
+        if (save.character == 0)
+        {
+            rightSprite = capitalistR;
+            leftSprite = capitalistL;
+        }
+        else if (save.character == 1)
+        {
+            rightSprite = communistR;
+            leftSprite = communistL;
+        }
+        else if (save.character == 2)
+        {
+            rightSprite = wizardR;
+            leftSprite = wizardL;
+        }
+        else
+        {
+            Debug.Log("Character ID out of bounds");
+            rightSprite = capitalistR;
+            leftSprite = capitalistL;
+        }
+
+        sprite.sprite = rightSprite;
+    }
     // Update is called once per frame
     void Update()
     {
