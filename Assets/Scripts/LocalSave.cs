@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LocalSave : MonoBehaviour
 {
-    public int[] levelNumCheck = new int[12];
+    public int[] levelNumCheck = new int[12]; //Checkpoint number by level
     public int character = 0;
     public bool hasWizard = false;
     public bool hasCommunist = false;
@@ -44,5 +44,15 @@ public class LocalSave : MonoBehaviour
     public void SetCharID(int chara)
     {
         character = chara;
+    }
+
+    public int GetCheckpointNum()
+    {
+        return levelNumCheck[currentScene];
+    }
+
+    public void SetCheckpointNum(int check)
+    {
+        levelNumCheck[currentScene] = check;
     }
 }

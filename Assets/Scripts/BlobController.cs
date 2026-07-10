@@ -55,10 +55,16 @@ public class BlobController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+
         sprite = GetComponent<SpriteRenderer>();
         SetCharacter();
-        rb = this.gameObject.GetComponent<Rigidbody2D>();
+
+        if (save.GetCheckpointNum() != 0)
+        {
+            transform.position = GameObject.Find("checkpoint_" + save.GetCheckpointNum()).transform.position; //Sets position equal to position of the given checkpoint
+        }
+
         respawn = transform.position;
         //Remove when level finish:
         //transform.position = new Vector2(117f, 3.3f);

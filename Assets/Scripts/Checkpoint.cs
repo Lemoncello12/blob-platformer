@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public Sprite sprite;
+    public int checkpointNum = 1; //What number checkpoint this is; for saving
+    
+    public Sprite sprite; //Checkpoint sprite after reached by the player
     public Sprite capitalist;
     public Sprite communist;
     public Sprite wizard;
@@ -49,6 +51,9 @@ public class Checkpoint : MonoBehaviour
             collision.GetComponent<BlobController>().respawn = this.transform.position;
             abyss.transform.position = new Vector2(abyss.transform.position.x, abyssY);
             cam.MoveUp(camY);
+
+            save.SetCheckpointNum(checkpointNum);
+            save.SavePlayer();
         }
     }
 }
