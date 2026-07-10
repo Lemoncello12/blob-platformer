@@ -7,8 +7,9 @@ public class LocalSave : MonoBehaviour
 {
     public int[] levelNumCheck = new int[12]; //Checkpoint number by level
     public int character = 0;
-    public bool hasWizard = false;
+    public bool hasWizard = false; //Vestigial code
     public bool hasCommunist = false;
+
     private int currentScene;
 
     void Awake()
@@ -34,6 +35,16 @@ public class LocalSave : MonoBehaviour
     {
         SaveSystem.DeletePlayer();
         SceneManager.LoadScene(0);
+    }
+
+    public void RestartLevel()
+    {
+        levelNumCheck[currentScene] = 0;
+        SavePlayer();
+
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene(currentScene);
     }
 
     public int GetCharID()
