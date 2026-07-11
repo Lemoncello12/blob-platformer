@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    //PlayerData is saved to a file via SaveSystem
+
     public int[] levelNumCheck;
     public int character;
 

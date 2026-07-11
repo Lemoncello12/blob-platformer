@@ -13,7 +13,7 @@ public class PlayMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Opens menu, pauses time
     {
         if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeSelf == false)
         {
@@ -33,7 +33,7 @@ public class PlayMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void ExitMenu()
+    public void ExitMenu() //Exits menu, resumes time
     {
         PauseMenu.SetActive(false);
         Time.timeScale = 1;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform center;
+    public Transform center; //Blob's position
     private float moveY;
     private bool moving;
 
@@ -17,11 +17,11 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(center.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(center.position.x, transform.position.y, transform.position.z); //Moves with player
 
         if (moving)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, moveY, transform.position.z), Time.deltaTime * 5);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, moveY, transform.position.z), Time.deltaTime * 5); //Moves vertically due to MoveUp function
         }
 
         if(transform.position.y == moveY)
@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void MoveUp(float y)
+    public void MoveUp(float y) //Moves vertically, called by checkpoint
     {
         moveY = y;
         moving = true;

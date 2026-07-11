@@ -20,7 +20,7 @@ public class Hoopy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<BlobController>() != null)
+        if (collision.GetComponent<BlobController>() != null) //On collision with Blob, load next scene if applicable
         {
             if (SceneManager.sceneCount + 1 != SceneManager.GetActiveScene().buildIndex){
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -21,7 +21,7 @@ public class SawMove : MonoBehaviour
     {
         original = transform.position;
 
-        if (invert)
+        if (invert) //Flips direction
         {
             flip = -1;
         }
@@ -37,7 +37,7 @@ public class SawMove : MonoBehaviour
     {
         if (moving)
         {
-            if (axisIsY)
+            if (axisIsY) //Position "Pingpongs" accross given axis
             {
                 transform.position = new Vector2(transform.position.x, flip * Mathf.PingPong(Time.time * speed, max) + original.y);
             }

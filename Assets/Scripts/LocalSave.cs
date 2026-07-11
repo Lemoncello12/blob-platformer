@@ -7,23 +7,21 @@ public class LocalSave : MonoBehaviour
 {
     public int[] levelNumCheck = new int[12]; //Checkpoint number by level
     public int character = 0;
-    public bool hasWizard = false; //Vestigial code
-    public bool hasCommunist = false;
 
     private int currentScene;
 
-    void Awake()
+    void Awake() //Loads save data, gets current scene;
     {
         LoadPlayer();
         currentScene = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public void SavePlayer()
+    public void SavePlayer() //Saves save data;
     {
         SaveSystem.SavePlayer(this);
     }
 
-    public void LoadPlayer()
+    public void LoadPlayer() //Saves variables to file via PlayerData and SaveSystem
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
@@ -31,13 +29,13 @@ public class LocalSave : MonoBehaviour
         levelNumCheck = data.levelNumCheck;
     }
 
-    public void ResetPlayer()
+    public void ResetPlayer() //Deletes save data
     {
         SaveSystem.DeletePlayer();
         SceneManager.LoadScene(0);
     }
 
-    public void RestartLevel()
+    public void RestartLevel() //Saves that no checkpoint has been reached, loads current scene
     {
         levelNumCheck[currentScene] = 0;
         SavePlayer();

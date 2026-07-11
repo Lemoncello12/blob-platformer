@@ -21,11 +21,11 @@ public class ToggleRedBlue : MonoBehaviour
         if (!isToggling)
         {
             isToggling = true;
-            Invoke("Toggle", interval);
+            Invoke("Toggle", interval); //Toggles after given seconds
         }
     }
 
-    void Toggle()
+    void Toggle() //Self-explanatory
     {
         isToggling = false;
         if (red.activeSelf == true)

@@ -23,6 +23,7 @@ public class Checkpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Sets flag sprite based on save data
         if (save.GetCharID() == 0)
         {
             sprite = capitalist;
@@ -45,7 +46,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<BlobController>() != null)
+        if (collision.GetComponent<BlobController>() != null) //On player interaction and checkpoint activation: change sprite, Blob's respawn, abyss of death and camera position, checkpoint num in save data
         {
             this.GetComponent<SpriteRenderer>().sprite = sprite;
             collision.GetComponent<BlobController>().respawn = this.transform.position;

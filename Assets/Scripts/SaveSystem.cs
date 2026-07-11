@@ -5,6 +5,8 @@ using UnityEngine;
 
 public static class SaveSystem
 {
+    //Most of this is taken from Brackeys if I recall
+    //Persistent data path is C://Users/henry/AppData/LocalLow/Lemoncello12
     public static void SavePlayer(LocalSave save)
     {
         BinaryFormatter formatter = new BinaryFormatter();

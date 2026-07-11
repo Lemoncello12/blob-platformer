@@ -15,9 +15,9 @@ public class SawRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, speed * Time.deltaTime);
+        transform.Rotate(0, 0, speed * Time.deltaTime); //Rotates parent object
 
-        for (int i = 0; i < saws.Length; i++)
+        for (int i = 0; i < saws.Length; i++) //Rotates each saw given
         {
             saws[i].transform.Rotate(0, 0, Time.deltaTime * -speed);
         }

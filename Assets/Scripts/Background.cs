@@ -10,6 +10,7 @@ public class Background : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        //Clones background sprite rightwards and upwards based on specs
         for (int i = 0; i < numRight; i++)
         {
             for (int a = 0; a < numUp; a++)

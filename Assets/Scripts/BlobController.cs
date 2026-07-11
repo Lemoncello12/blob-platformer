@@ -12,7 +12,7 @@ public class BlobController : MonoBehaviour
     public float maxJumpForce;
     public float jumpTime;
 
-    public float bounceMult;
+    public float bounceMult; //For bouncy green blocks level 2 onwards
     private float bounce = 1;
 
     private float currentJumpTime;
@@ -72,6 +72,7 @@ public class BlobController : MonoBehaviour
 
     void SetCharacter()
     {
+        //Sets left and right character sprites based on save data
         if (save.GetCharID() == 0)
         {
             rightSprite = capitalistR;
@@ -124,7 +125,7 @@ public class BlobController : MonoBehaviour
     }
     void Jump()
     {
-        if (Grounded() && Input.GetButtonDown("Jump"))
+        if (Grounded() && Input.GetButtonDown("Jump")) //Starts jumping;
         {
             isJumping = true;
             currentJumpTime = jumpTime;
@@ -132,7 +133,7 @@ public class BlobController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-        if (Input.GetButton("Jump") && isJumping)
+        if (Input.GetButton("Jump") && isJumping) //In midair from jump, still pressing jump
         {
             jumpForce *= 2 * bounce;
             if (jumpForce > (maxJumpForce * bounce))
@@ -152,7 +153,7 @@ public class BlobController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump")) //Stops pressing jump
         {
             isJumping = false;
             bounce = 1;
@@ -164,7 +165,7 @@ public class BlobController : MonoBehaviour
         
         if (isDashing)
         {
-            if (facingRight)
+            if (facingRight) 
             {
                 rb.velocity = new Vector2(dashSpeed, rb.velocity.y);
             }
@@ -173,7 +174,7 @@ public class BlobController : MonoBehaviour
                 rb.velocity = new Vector2(-dashSpeed, rb.velocity.y);
             }
 
-            if ((facingRight && transform.position.x > dashEndX) || (!facingRight && dashEndX > transform.position.x))
+            if ((facingRight && transform.position.x > dashEndX) || (!facingRight && dashEndX > transform.position.x)) //Ends dash when distance reached
             {
                 isDashing = false;
                 rb.gravityScale = 2.5f;
@@ -186,7 +187,7 @@ public class BlobController : MonoBehaviour
             {
                 canDash = true;
             }
-            if (Input.GetKeyDown(KeyCode.Z) && canDash)
+            if (Input.GetKeyDown(KeyCode.Z) && canDash) //Starts dashing
             {
                 isDashing = true;
                 isJumping = false;
@@ -204,7 +205,7 @@ public class BlobController : MonoBehaviour
         }
     }
 
-    public void Die()
+    public void Die() //Sets position to respawn point, stops velocity, jumping, dashing, etc.
     {
         rb.velocity = new Vector2(0, 0);
         isJumping = false;
@@ -216,7 +217,8 @@ public class BlobController : MonoBehaviour
 
     public bool Grounded()
     {
-        if (Physics2D.BoxCast(new Vector2(transform.position.x + feetDistX, transform.position.y), feetSize, 0, -transform.up, feetDistY, ground)) {
+        if (Physics2D.BoxCast(new Vector2(transform.position.x + feetDistX, transform.position.y), feetSize, 0, -transform.up, feetDistY, ground)) //Hitbox determines if touching ground
+        {
             return true;
         }
         else
@@ -225,7 +227,7 @@ public class BlobController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) //Touches damage object
     {
         if (other.CompareTag("Damage"))
         {
@@ -233,14 +235,14 @@ public class BlobController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //Touches bouncy object
     {
         if (collision.gameObject.CompareTag("Bounce"))
         {
             bounce = bounceMult;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision) //Stops dashing if blob hits an object
     {
         if (!Grounded() && isDashing)
         {
@@ -250,7 +252,7 @@ public class BlobController : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() //Shows grounded hitbox in editor only 
     {
         Vector3 groundedOrigin = new Vector3(transform.position.x + feetDistX, transform.position.y, transform.position.z);
         Gizmos.DrawWireCube(groundedOrigin - transform.up * feetDistY, feetSize);

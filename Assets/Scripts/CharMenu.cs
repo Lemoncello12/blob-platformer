@@ -12,7 +12,7 @@ public class CharMenu : MonoBehaviour
 
     public void Start()
     {
-        if (save.GetCharID() == 0)
+        if (save.GetCharID() == 0) //Sets arrow active based on character chosen in save data
         {
             arrow1.SetActive(true);
             arrow2.SetActive(false);
@@ -31,7 +31,7 @@ public class CharMenu : MonoBehaviour
             arrow3.SetActive(true);
         }
     }
-    public void CharacterSelect (int chara)
+    public void CharacterSelect (int chara) //Changes save data and active arrow, called by buttons
     {
         save.SetCharID(chara);
         save.SavePlayer();
