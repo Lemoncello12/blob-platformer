@@ -67,7 +67,7 @@ public class BlobController : MonoBehaviour
 
         respawn = transform.position;
         //Remove when level finish:
-        //transform.position = new Vector2(117f, 3.3f);
+        //transform.position = new Vector2(149f, 9.6f);
     }
 
     void SetCharacter()

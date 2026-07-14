@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Hoopy : MonoBehaviour
 {
+    public LocalSave save;
+    public int sceneToLoad = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +25,9 @@ public class Hoopy : MonoBehaviour
     {
         if (collision.GetComponent<BlobController>() != null) //On collision with Blob, load next scene if applicable
         {
-            if (SceneManager.sceneCount + 1 != SceneManager.GetActiveScene().buildIndex){
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                SceneManager.LoadScene(0);
-            }
+            save.SetCheckpointNum(0);
+            save.SavePlayer();
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 
