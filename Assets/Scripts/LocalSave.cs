@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LocalSave : MonoBehaviour
 {
     public int[] levelNumCheck = new int[12]; //Checkpoint number by level
+    public bool[] collectibleGot = new bool[12];
     public int character = 0;
 
     private int currentScene;
@@ -39,6 +40,15 @@ public class LocalSave : MonoBehaviour
     {
         levelNumCheck[currentScene] = 0;
         SavePlayer();
+
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene(currentScene);
+    }
+
+    public void RestartFromCheckpoint() //Loads current scene
+    {
+        SavePlayer(); //Probably redudant
 
         Time.timeScale = 1;
 
